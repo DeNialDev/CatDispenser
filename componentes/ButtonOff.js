@@ -15,7 +15,7 @@ export function ButtonOff() {
     }
     return (
         <TouchableOpacity style={Styles.button} onPress={handleLedOff} >
-            <Text style={Styles.text}>Ap agar LED</Text>
+            <Text style={Styles.text}>Apagar LED</Text>
         </TouchableOpacity>
     )
 }
