@@ -15,15 +15,16 @@ var url = Global.urlApi + "/DataDispenser.php";
 
 const CatDispenser = () => {
   const [data, setData] = useState([]);
-  useEffect(() => {
-    const getData = async () => {
-      const response = await axios.get(url);
-      setData(response.data);
+  const getData = async () => {
+    const response = await axios.get(url);
+    setData(response.data);
 
-      console.log(data);
-    };
+    console.log(data);
+  };
+  useEffect(() => {
+    
     getData();
-  }, []);
+  },[]);
   return (
     <View style={Styles.container}>
        <FlatList
@@ -35,10 +36,15 @@ const CatDispenser = () => {
         )}
         ListHeaderComponent={() => (
           <Text style={{ fontWeight: "bold", fontSize: 20, marginBottom: 10 }}>
-            Dispensador
+            Dispensa
           </Text>
         )}
       />
+      <TouchableOpacity style={Styles.button} onPress={() => {
+        getData()
+      }}>
+        <Text style={Styles.textButton}>Estado del recipiente</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -50,6 +56,19 @@ const Styles = StyleSheet.create({
     borderRadius: 10,
     flex: 1,
     alignItems: "stretch",
+  },
+  button: {
+    borderRadius: 5,
+    backgroundColor: "#fea8f3",
+    marginTop: 12,
+    height: 40,
+    color: "#ffffff",
+    textAlign: "center",
+    paddingTop: 10,
+  },
+  textButton: {
+    color: "#ffffff",
+    textAlign: "center",
   },
 });
 export default CatDispenser;

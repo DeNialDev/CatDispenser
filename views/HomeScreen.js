@@ -1,10 +1,11 @@
-import React from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import CatRegister from '../componentes/CatRegister'
+import { NavigationContainer } from '@react-navigation/native';
+import React from "react";
+import { StyleSheet, Text, TextInput, View } from "react-native";
+import CatDispenser from "../componentes/CatDispenser";
+import CatRegister from '../componentes/CatRegister';
 import DataDisplay from "../componentes/DataDisplay";
-import CatDispenser from "../componentes/CatDispenser"
+import SetIp from "../componentes/SetIp"
 function StartScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -28,8 +29,9 @@ export default function HomeScreen() {
   
       <Tab.Navigator>
         <Tab.Screen name="Start" component={DataDisplay} options={{headerShown: false}}/>
-        <Tab.Screen name="Settings" component={CatRegister} options={{headerShown: false}}/>
+        <Tab.Screen name="Register" component={CatRegister} options={{headerShown: false}}/>
         <Tab.Screen name="Dispenser" component={CatDispenser} options={{headerShown: false}}/>
+        <Tab.Screen name="Settings" component={SetIp} options={{headerShown: false}}/>
       </Tab.Navigator>
     
   );
