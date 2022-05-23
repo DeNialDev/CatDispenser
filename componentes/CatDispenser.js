@@ -12,7 +12,7 @@ import Global from "../url";
 import axios from "axios";
 import ListItemDispenser from "../componentes/ListItemDispenser"
 var url = Global.urlApi + "/DataDispenser.php";
-
+export var IsFull = true;
 const CatDispenser = () => {
   const [data, setData] = useState([]);
   const getData = async () => {
@@ -20,6 +20,12 @@ const CatDispenser = () => {
     setData(response.data);
 
     console.log(data);
+    if(data[0].Boul === "VACIO"){
+      IsFull = false;
+    }else{
+      IsFull = true
+    }
+    console.log(String(IsFull))
   };
   useEffect(() => {
     
@@ -36,7 +42,7 @@ const CatDispenser = () => {
         )}
         ListHeaderComponent={() => (
           <Text style={{ fontWeight: "bold", fontSize: 20, marginBottom: 10 }}>
-            Dispensa
+            Dispensador
           </Text>
         )}
       />
@@ -50,7 +56,7 @@ const CatDispenser = () => {
 };
 const Styles = StyleSheet.create({
   container: {
-    height: 10,
+    height: 100,
     backgroundColor: "#fff",
     padding: 50,
     borderRadius: 10,

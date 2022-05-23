@@ -3,6 +3,8 @@ import { Text, FlatList, View, StyleSheet } from "react-native";
 import axios from "axios";
 import ListItem from "./ListItem";
 import Global from "../url";
+import CatDispenser from "./CatDispenser";
+import { IsFull } from "./CatDispenser";
 var url = Global.urlApi + "/Data.php";
 const DataDisplay = () => {
   const [data, setData] = useState([]);
@@ -17,7 +19,7 @@ const DataDisplay = () => {
   }, []);
   return (
     <View style={Styles.container}>
-      <FlatList
+    {IsFull ? <FlatList
         data={data}
         keyExtractor={(item) => item.id}
         renderItem={({ item, index }) => <ListItem item={item} />}
@@ -29,8 +31,11 @@ const DataDisplay = () => {
             Lista de gatos
           </Text>
         )}
-      />
+      /> : <Text style={{ fontWeight: "bold", fontSize: 20, marginBottom: 10 }}>Dispensador vacio</Text>}
+      
+      
     </View>
+    
   );
 };
 const Styles = StyleSheet.create({
