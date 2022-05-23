@@ -1,10 +1,13 @@
 import React from "react";
 import { Text, View, StyleSheet, SafeAreaView, Button } from "react-native";
 import axios from "axios";
-var url = "http://192.168.137.173/LED=ON"
+var url = "http://192.168.137.85/LED="
 const ListItem = ({ item }) => {
   const { catName, catWeight, id } = item;
-  const requestToDispenser = (catName) =>{
+
+  const requestToDispenser = (catName, catWeight) =>{
+      url += String(catWeight)
+      console.log(url)
       alert("Dispensador abierto para: " + catName);
       axios.get(url)
   }
@@ -13,8 +16,8 @@ const ListItem = ({ item }) => {
       <View style={styles.container}>
         <Text>{catName} - {catWeight} kg</Text>
         <Button title="Alimentar" color="#fea8f3" onPress={() => {
-            requestToDispenser(catName)
-
+            requestToDispenser(catName, catWeight)
+            url = "http://192.168.137.85/LED="
         }
         
         }/>
