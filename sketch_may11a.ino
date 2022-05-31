@@ -1,5 +1,4 @@
 
-
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 #include <WiFiClient.h>
@@ -54,8 +53,8 @@ void loop() {
     Serial.println("Plato vacio");
     if (WiFi.status() == WL_CONNECTED) {
       
-      String datos = "boul=" + String("VACIO");
-      http.begin(client, "http://multidisp.000webhostapp.com/Ins.php");
+      String datos = "dispenser=" + String("VACIO");
+      http.begin(client, "http://multidisp.000webhostapp.com/DispenserUpdate.php");
       http.addHeader("Content-Type", "application/x-www-form-urlencoded");
       int response = http.POST(datos);
       if (response > 0) {
@@ -79,8 +78,8 @@ void loop() {
      
         if (WiFi.status() == WL_CONNECTED) {
       
-      String datos = "boul=" + String("LLENO");
-      http.begin(client, "http://multidisp.000webhostapp.com/Ins.php");
+      String datos = "dispenser=" + String("LLENO");
+      http.begin(client, "http://multidispositivos.000webhostapp.com/DispenserUpdate.php");
       http.addHeader("Content-Type", "application/x-www-form-urlencoded");
       int response = http.POST(datos);
       if (response > 0) {
@@ -100,7 +99,7 @@ void loop() {
   }
   Serial.println(distancia);
 
-  delay(10000);
+  delay(1zz0000);
 }
 void led() {
   WiFiClient client = server.available();
